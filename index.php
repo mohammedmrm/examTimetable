@@ -55,7 +55,7 @@ error_reporting(0);
       font-style: normal;
       font-weight: 400;
       font-display: swap;
-      src: local('Cairo'), local('Cairo-Regular'), url(Cairofont.woff2) format('woff2');
+      src: local('Cairo'), local('Cairo-Regular'), url(assets/Cairofont.woff2) format('woff2');
       unicode-range: U+0600-06FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE80-FEFC;
     }
 
@@ -65,7 +65,7 @@ error_reporting(0);
       font-style: normal;
       font-weight: 400;
       font-display: swap;
-      src: local('Cairo'), local('Cairo-Regular'), url(Cairofont.woff2) format('woff2');
+      src: local('Cairo'), local('Cairo-Regular'), url(assets/Cairofont.woff2) format('woff2');
       unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
     }
 
