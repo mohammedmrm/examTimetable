@@ -349,7 +349,7 @@
           btns = "";
           if (this.user_id == $("#userId").val() && this.user_id > 0) {
             btns = `<button class = "btn btn-icon text-primary" onclick="editExam(${i})" data-toggle="modal" data-target="#editExam"> تعديل </button>
-                    <button class="btn btn-icon text-dange">حذف</button>`
+                    <button class="btn btn-icon text-dange" onclick="deleteExam(${this.timetableId})">حذف</button>`
           }
 
           timetable.rows.add([
@@ -434,6 +434,30 @@
     $("#addTimetableForm #subject").val(exam[idx].subject);
     $("#addTimetableForm #course").val(exam[idx].course);
     $("#addTimetableForm #attempt").val(exam[idx].attempt);
+  }
+
+  function deleteExam(id) {
+    if (confirm("هل انت متاكد من الحذف")) {
+      $.ajax({
+        url: "script/_deleteExam.php",
+        type: "POST",
+        data: {
+          id: id
+        },
+        success: function(res) {
+          if (res.success == 1) {
+            alert('تم الحذف');
+            getTimetable();
+          } else {
+            Toast.warning(res.msg);
+          }
+          console.log(res)
+        },
+        error: function(e) {
+          console.log(e);
+        }
+      });
+    }
   }
 </script>
 <?php require_once("bottom.php"); ?>
