@@ -5,7 +5,6 @@ error_reporting(0);
 header('Content-Type: application/json');
 require_once("dbconnection.php");
 require_once("_crpt.php");
-require_once("_sendEmail.php");
 
 use Violin\Violin;
 
