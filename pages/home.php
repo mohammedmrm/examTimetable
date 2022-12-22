@@ -68,13 +68,13 @@
 
       <!-- Table -->
       <div class="table-responsive table-striped">
-        <table id="tb-timetable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle">
+        <table id="tb-timetable" class="table" style="font-size: 12;">
           <thead class="thead-light">
             <tr>
-              <th>الكلية</th>
+              <th>الكلــــــــية</th>
               <th>القسم/الفرع</th>
               <th>التاريخ و الوقت</th>
-              <th>نوع الامتحان</th>
+              <th>نوع الامتحــــــــــــــان</th>
               <th>نوع الدراسة</th>
               <th>المرحلة</th>
               <th>عدد الممتحنين</th>
@@ -336,6 +336,16 @@
           } else {
             mood = "الكتروني"
           }
+          if (this.attempt == 1) {
+            attempt = "الدور الاول"
+          } else {
+            attempt = "الدور الثاني"
+          }
+          if (this.course == 1) {
+            course = "الكورس الاول"
+          } else {
+            course = "الكورس الثاني"
+          }
           btns = "";
           if (this.user_id == $("#userId").val() && this.user_id > 0) {
             btns = `<button class = "btn btn-icon text-primary" onclick="editExam(${i})" data-toggle="modal" data-target="#editExam"> تعديل </button>
@@ -347,7 +357,7 @@
               this.name,
               this.department + ' / ' + this.subject,
               this.dat + `<br>` + this.time,
-              mood,
+              `${course}-${attempt} <br> ${mood}`,
               type,
               stage,
               this.students,
