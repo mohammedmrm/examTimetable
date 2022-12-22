@@ -1,0 +1,17 @@
+<<<<<<< HEAD
+node_modules
+=======
+.DS_Store
+__MACOSX/
+.git/*
+node_modules/
+PHPMailer/
+src/.tmp/
+dist/
+src/
+vender/
+datetimepicker/
+gulpfiles/
+tcpdf/
+img/
+DataTables/
