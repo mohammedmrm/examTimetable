@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-node_modules
-=======
 .DS_Store
-__MACOSX/
 .git/*
 node_modules/
 PHPMailer/
