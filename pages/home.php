@@ -437,7 +437,7 @@
   }
 
   function deleteExam(id) {
-    if (confirm("هل انت متاكد من الحذف")) {
+    if (confirm("هل انت متاكد من الحذف ")) {
       $.ajax({
         url: "script/_deleteExam.php",
         type: "POST",
