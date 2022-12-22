@@ -75,15 +75,15 @@ try {
     }
   } else {
     $error = [
-      "collage" => $v->errors()->get('collage'),
-      "department" => $v->errors()->get('department'),
-      "subject" => $v->errors()->get('subject'),
-      "type" => $v->errors()->get('type'),
-      "students" => $v->errors()->get('studnts'),
-      "mood" => $v->errors()->get('mood'),
-      "stage" => $v->errors()->get('stage'),
-      "course" => $v->errors()->get('course'),
-      "attempt" => $v->errors()->get('attempt'),
+      "collage" => $v->errors()->get('collage')[0],
+      "department" => $v->errors()->get('department')[0],
+      "subject" => $v->errors()->get('subject')[0],
+      "type" => $v->errors()->get('type')[0],
+      "students" => $v->errors()->get('studnts')[0],
+      "mood" => $v->errors()->get('mood')[0],
+      "stage" => $v->errors()->get('stage')[0],
+      "course" => $v->errors()->get('course')[0],
+      "attempt" => $v->errors()->get('attempt')[0],
       "date" => $date_err,
 
     ];
