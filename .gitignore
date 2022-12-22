@@ -6,7 +6,6 @@ src/.tmp/
 dist/
 src/
 vender/
-datetimepicker/
 gulpfiles/
 tcpdf/
 img/
