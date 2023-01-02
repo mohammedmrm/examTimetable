@@ -419,7 +419,7 @@
             timetable.rows.add([
               [
                 this.name,
-                this.department + ' / ' + this.subject,
+                this.department + ' <br> ' + this.subject,
                 this.dat + `<br>` + this.time,
                 `${course}-${attempt} <br> ${mood}`,
                 type,
