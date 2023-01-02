@@ -74,7 +74,7 @@
       <hr />
       <!-- Table -->
       <div class="col-12">
-        <table id="tb-timetable" class="display responsive nowrap" style="width:100%">
+        <table id="tb-timetable" class="table table-striped display responsive nowrap" style="width:100%">
           <thead class="thead-light">
             <tr>
               <th>الكلــــــــية</th>
