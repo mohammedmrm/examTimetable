@@ -295,7 +295,7 @@
         collage = 0;
         timetable.rows({
           page: "current"
-        }).remove();
+        }).remove().draw();
         exam = res.data;
         i = 0;
         $.each(res.data, function() {
