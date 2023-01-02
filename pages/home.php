@@ -457,8 +457,16 @@
           console.log(res);
           $("#date_err").text(res.date_err);
           if (res.success == 1) {
-            Toast.success('تم التحديث');
-            alert("تم التحديث");
+            $('#editExam').modal('toggle');
+            Toastify({
+              text: 'تم التحديث',
+              duration: 3000,
+              close: true,
+              gravity: "bottom", // `top` or `bottom`
+              position: "center", // `left`, `center` or `right`
+              stopOnFocus: true, // Prevents dismissing of toast on hover
+              className: "success",
+            }).showToast();
             getTimetable();
           } else {
             $("#date_err").text(res.error["date"]);
@@ -471,7 +479,15 @@
             $("#stage_err").text(res.error["stage"]);
             $("#course_err").text(res.error["course"]);
             $("#attempt_err").text(res.error["attempt"]);
-            Toast.warning("هناك بعض المدخلات غير صالحة", 'خطأ');
+            Toastify({
+              text: "هناك بعض المدخلات غير صالحة",
+              duration: 3000,
+              close: true,
+              gravity: "bottom", // `top` or `bottom`
+              position: "center", // `left`, `center` or `right`
+              stopOnFocus: true, // Prevents dismissing of toast on hover
+              className: "danger",
+            }).showToast();
           }
         },
         error: function(e) {
@@ -507,11 +523,26 @@
           },
           success: function(res) {
             if (res.success == 1) {
-              alert('تم الحذف');
+              Toastify({
+                text: "تم الحذف",
+                duration: 3000,
+                close: true,
+                gravity: "bottom", // `top` or `bottom`
+                position: "center", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                className: "danger",
+              }).showToast();
               getTimetable();
             } else {
-              alert(res.msg);
-              Toast.warning(res.msg);
+              Toastify({
+                text: res.msg,
+                duration: 3000,
+                close: true,
+                gravity: "bottom", // `top` or `bottom`
+                position: "center", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                className: "danger",
+              }).showToast();
             }
             console.log(res)
           },
@@ -536,11 +567,27 @@
         },
         success: function(res) {
           if (res.success == 1) {
-            alert('تم التحديث');
+            $("#setAttendance").modal('hide');
+            Toastify({
+              text: 'تم التحديث',
+              duration: 3000,
+              close: true,
+              gravity: "bottom", // `top` or `bottom`
+              position: "center", // `left`, `center` or `right`
+              stopOnFocus: true, // Prevents dismissing of toast on hover
+              className: "danger",
+            }).showToast();
             getTimetable();
           } else {
-            alert(res.msg);
-            Toast.warning(res.msg);
+            Toastify({
+              text: res.msg,
+              duration: 3000,
+              close: true,
+              gravity: "bottom", // `top` or `bottom`
+              position: "center", // `left`, `center` or `right`
+              stopOnFocus: true, // Prevents dismissing of toast on hover
+              className: "danger",
+            }).showToast();
           }
           console.log(res)
         },
