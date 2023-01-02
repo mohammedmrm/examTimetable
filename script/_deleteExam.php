@@ -20,7 +20,7 @@ $v->validate([
 
 if ($v->passes()) {
 
-   $sql = "delete from users where id = ? and user_id=?";
+   $sql = "delete from timetable where id = ? and user_id=?";
    $result = setData($con, $sql, [$id, $_SESSION['userid']]);
    if ($result > 0) {
       $success = 1;
