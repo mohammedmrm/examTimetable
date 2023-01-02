@@ -349,9 +349,7 @@
             timetable.column(6).visible(false);
             timetable.column(7).visible(false);
           }
-          timetable.rows({
-            page: "current"
-          }).remove().draw();
+          timetable.clear().draw();
           exam = res.data;
           i = 0;
           $.each(res.data, function() {
