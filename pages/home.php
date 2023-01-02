@@ -538,6 +538,7 @@
             alert('تم التحديث');
             getTimetable();
           } else {
+            alert(res.msg);
             Toast.warning(res.msg);
           }
           console.log(res)
