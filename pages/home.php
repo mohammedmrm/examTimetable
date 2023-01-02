@@ -74,25 +74,24 @@
       <hr />
 
       <!-- Table -->
-      <div class="table-responsive table-striped">
-        <table id="tb-timetable" class="table" style="font-size: 12;">
-          <thead class="thead-light">
-            <tr>
-              <th>الكلــــــــية</th>
-              <th>القسم/الفرع</th>
-              <th>التاريخ و الوقت</th>
-              <th>نوع الامتحــــــــــــــان</th>
-              <th>نوع الدراسة</th>
-              <th>المرحلة</th>
-              <th>عدد الممتــــحنين</th>
-              <th> تعديل او حذف </th>
-            </tr>
-          </thead>
-          <tbody id="timetable">
+      <table id="tb-timetable" class="table table-striped" style="font-size: 12;">
+        <thead class="thead-light">
+          <tr>
+            <th>الكلــــــــية</th>
+            <th>القسم/الفرع</th>
+            <th>التاريخ و الوقت</th>
+            <th>نوع الامتحــــــــــــــان</th>
+            <th>نوع الدراسة</th>
+            <th>المرحلة</th>
+            <th>عدد الممتــــحنين</th>
+            <th> تعديل او حذف </th>
+          </tr>
+        </thead>
+        <tbody id="timetable">
 
-          </tbody>
-        </table>
-      </div>
+        </tbody>
+      </table>
+
     </div>
     <!-- End Table -->
     <div class="row">
@@ -341,6 +340,18 @@
           $("#pagination").html("");
           $("#timetable").removeClass("loading");
           collage = 0;
+          if ($("#type").val() != 4 && $("#type").val() != '') {
+            timetable.column(5).visible(false);
+          } else {
+            timetable.column(5).visible(true);
+          }
+          if ($("#userId").val() > 0) {
+            timetable.column(6).visible(true);
+            timetable.column(7).visible(true);
+          } else {
+            timetable.column(6).visible(false);
+            timetable.column(7).visible(false);
+          }
           timetable.rows({
             page: "current"
           }).remove().draw();
@@ -407,11 +418,6 @@
                     <button class="btn btn-icon text-info fs-2"    onclick="setAttendance(${this.timetableId})" data-toggle="modal" data-target="#setAttendance"><i class="bi bi-people"></i></button>
                     <div>
                     `
-            }
-            if ($("#type").val() != 4 && $("#type").val() != '') {
-              timetable.column(5).visible(false);
-            } else {
-              timetable.column(5).visible(true);
             }
             timetable.rows.add([
               [
