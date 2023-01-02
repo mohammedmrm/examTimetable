@@ -73,21 +73,23 @@
     <div class="row">
       <hr />
       <!-- Table -->
-      <table id="tb-timetable" class="table table-striped" style="font-size: 12;">
-        <thead class="thead-light">
-          <tr>
-            <th>الكلــــــــية</th>
-            <th>القسم/الفرع</th>
-            <th>التاريخ و الوقت</th>
-            <th>نوع الامتحــــــــــــــان</th>
-            <th>نوع الدراسة</th>
-            <th>المرحلة</th>
-            <th>عدد الممتــــحنين</th>
-            <th> تعديل او حذف </th>
-          </tr>
-        </thead>
-        <tbody id="timetable"></tbody>
-      </table>
+      <div class="col-12">
+        <table id="tb-timetable" class="display responsive nowrap" style="width:100%">
+          <thead class="thead-light">
+            <tr>
+              <th>الكلــــــــية</th>
+              <th>القسم/الفرع</th>
+              <th>التاريخ و الوقت</th>
+              <th>نوع الامتحــــــــــــــان</th>
+              <th>نوع الدراسة</th>
+              <th>المرحلة</th>
+              <th>عدد الممتــــحنين</th>
+              <th> تعديل او حذف </th>
+            </tr>
+          </thead>
+          <tbody id="timetable"></tbody>
+        </table>
+      </div>
     </div>
     <!-- End Table -->
     <div class="row">
@@ -216,7 +218,7 @@
           <!-- End Card -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+          <button type="button" class="btn btn-secondary" onclick="$('#editExam').modal('hide');">اغلاق</button>
           <button type="button" class="btn btn-primary" onclick="saveChanges()">حفظ التغيرات</button>
         </div>
       </div>
@@ -252,7 +254,7 @@
         </div>
         <!-- End Card -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+          <button type="button" class="btn btn-secondary" onclick="$('#setAttendance').modal('hide');">اغلاق</button>
           <button type="button" class="btn btn-primary" onclick="saveAttendance()">حفظ التغيرات</button>
         </div>
       </div>
@@ -270,7 +272,6 @@
         "sLengthMenu": "عرض_MENU_سجل",
         "sSearch": "بحث:"
       },
-      responsive: true,
       dom: 'Bfrtip',
       buttons: [{
           extend: 'excel',
