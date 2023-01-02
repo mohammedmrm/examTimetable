@@ -41,4 +41,4 @@ try {
   $success = "0";
 }
 ob_end_clean();
-echo json_encode(["success" => $success, "data" => $data]);
+echo json_encode([$query, "success" => $success, "data" => $data]);
