@@ -409,9 +409,9 @@
             btns = "";
             if ((this.user_id == $("#userId").val() || $("#userRole").val() == 1) && this.user_id > 0) {
               btns = `<div class="row">
-                    <button class="btn btn-icon text-primary fs-2" onclick="editExam(${i})" data-toggle="modal" data-target="#editExam"><i class="bi bi-pen"></i></button>
+                    <button class="btn btn-icon text-primary fs-2" onclick="editExam(${i});$('#editExam').modal('show');" ><i class="bi bi-pen"></i></button>
                     <button class="btn btn-icon text-danger fs-2"  onclick="deleteExam(${this.timetableId})"><i class="bi bi-trash"></i></button>
-                    <button class="btn btn-icon text-info fs-2"    onclick="setAttendance(${this.timetableId})" data-toggle="modal" data-target="#setAttendance"><i class="bi bi-people"></i></button>
+                    <button class="btn btn-icon text-info fs-2"    onclick="setAttendance(${this.timetableId});$('#setAttendance').modal('show');"><i class="bi bi-people"></i></button>
                     <div>
                     `
             }
@@ -457,7 +457,7 @@
           console.log(res);
           $("#date_err").text(res.date_err);
           if (res.success == 1) {
-            $('#editExam').modal('toggle');
+            $('#editExam').modal('hide');
             Toastify({
               text: 'تم التحديث',
               duration: 3000,
