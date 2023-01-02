@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 error_reporting(0);
 header('Content-Type: application/json');
@@ -36,4 +37,5 @@ if ($v->passes()) {
    $msg = "فشل الحذف";
    $success = 0;
 }
+ob_end_clean();
 echo json_encode(['success' => $success, 'msg' => $msg]);
