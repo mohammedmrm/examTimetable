@@ -23,7 +23,6 @@ error_reporting(0);
   <!-- CSS Front Template -->
   <link rel="stylesheet" href="./assets/css/theme.min.css">
   <script src="./assets/js/jquery.js"></script>
-  <script src="./assets/js/toast.js"></script>
   <style>
     .loading {
       background-image: url(assets/img/loading.gif);

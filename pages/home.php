@@ -207,7 +207,7 @@
                       </select>
                       <span class=" text-danger" id="mood_err"></span>
                     </div>
-
+                    <input id="timetableId" type="hidden" name="timetableId" value="">
                   </div>
                 </div>
               </form>
@@ -260,7 +260,6 @@
   </div>
 
   <!-- End Col -->
-  <input id="timetableId" type="hidden" name="timetableId" value="">
   <input type="hidden" id="userId" value="<?php echo $_SESSION['userid'] ?>">
   <input type="hidden" id="userRole" value="<?php echo $_SESSION['role'] ?>">
   <script src="datetimepicker/js/bootstrap-datetimepicker.js"></script>
@@ -458,8 +457,6 @@
           console.log(res);
           $("#date_err").text(res.date_err);
           if (res.success == 1) {
-            $("#addTimetableForm input").val("");
-            $("#addTimetableForm select").val("");
             Toast.success('تم التحديث');
             alert("تم التحديث");
             getTimetable();
