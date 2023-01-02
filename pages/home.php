@@ -27,8 +27,8 @@
                   <div class="col-sm-3 mb-4 mb-sm-0">
                     <label class="form-label" for="date">التاريخ</label>
                     <div class="input-group col-12">
-                      <div class="input-group-prepend">
-                        <label class="input-group-text text-black" onclick="removeDate()" data-toggle="tooltip" data-placement="top" title="عرض كل التواريخ">X</label>
+                      <div class="input-group-prepend bg-primary">
+                        <label class="input-group-text text-white bg-primary" onclick=" removeDate()" data-toggle="tooltip" data-placement="top" title="عرض كل التواريخ">X</label>
                       </div>
                       <input type="date" class="form-control" value="<?php echo date('Y-m-d'); ?>" name="date" id="date">
                       <span class="text-danger" id="date_err"></span>
