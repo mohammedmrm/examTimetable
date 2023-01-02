@@ -4,7 +4,7 @@ session_start();
 error_reporting(0);
 header("Content-Type: application/json; charset=UTF-8");
 require_once("_access.php");
-access([1]);
+access([1, 2]);
 ob_end_clean();
 require_once("dbconnection.php");
 $name = $_REQUEST["name"];

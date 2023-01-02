@@ -19,9 +19,14 @@ $v->validate([
 ]);
 
 if ($v->passes()) {
+   if ($_SESSION['role'] == 1) {
+      $sql = "delete from timetable where id = ?";
+      $result = setData($con, $sql, [$id]);
+   } else {
+      $sql = "delete from timetable where id = ? and user_id=?";
+      $result = setData($con, $sql, [$id, $_SESSION['userid']]);
+   }
 
-   $sql = "delete from timetable where id = ? and user_id=?";
-   $result = setData($con, $sql, [$id, $_SESSION['userid']]);
    if ($result > 0) {
       $success = 1;
    } else {

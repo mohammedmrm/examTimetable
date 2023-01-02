@@ -64,24 +64,45 @@ try {
         $sql = "select * from users where id=?";
         $res = getData($con, $sql, [$_SESSION['userid']]);
         if (count($res)) {
-            $sql = 'update timetable set 
-            collage_id = ?,
-            department = ?,
-            subject = ?,
-            students = ?,
-            date = ? ,
-            time = ? ,
-            type = ? ,
-            stage = ? ,
-            course = ? ,
-            attempt = ?,
-            mood = ?
-            where user_id =? and id=?';
-            $result = setDataWithLastID(
-                $con,
-                $sql,
-                [$collage, $department, $subject, $students, $date, $time, $type, $stage, $course, $attempt, $mood, $_SESSION['userid'], $id]
-            );
+            if ($_SESSION['role'] == 1) {
+                $sql = 'update timetable set 
+                        collage_id = ?,
+                        department = ?,
+                        subject = ?,
+                        students = ?,
+                        date = ? ,
+                        time = ? ,
+                        type = ? ,
+                        stage = ? ,
+                        course = ? ,
+                        attempt = ?,
+                        mood = ?
+                        where id=?';
+                $result = setDataWithLastID(
+                    $con,
+                    $sql,
+                    [$collage, $department, $subject, $students, $date, $time, $type, $stage, $course, $attempt, $mood, $id]
+                );
+            } else {
+                $sql = 'update timetable set 
+                        collage_id = ?,
+                        department = ?,
+                        subject = ?,
+                        students = ?,
+                        date = ? ,
+                        time = ? ,
+                        type = ? ,
+                        stage = ? ,
+                        course = ? ,
+                        attempt = ?,
+                        mood = ?
+                        where user_id =? and id=?';
+                $result = setDataWithLastID(
+                    $con,
+                    $sql,
+                    [$collage, $department, $subject, $students, $date, $time, $type, $stage, $course, $attempt, $mood, $_SESSION['userid'], $id]
+                );
+            }
             $success = 1;
         } else {
             $success = 0;

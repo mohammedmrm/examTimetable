@@ -72,7 +72,6 @@
     <!-- End Row -->
     <div class="row">
       <hr />
-
       <!-- Table -->
       <table id="tb-timetable" class="table table-striped" style="font-size: 12;">
         <thead class="thead-light">
@@ -87,11 +86,8 @@
             <th> تعديل او حذف </th>
           </tr>
         </thead>
-        <tbody id="timetable">
-
-        </tbody>
+        <tbody id="timetable"></tbody>
       </table>
-
     </div>
     <!-- End Table -->
     <div class="row">
@@ -266,6 +262,7 @@
   <!-- End Col -->
   <input id="timetableId" type="hidden" name="timetableId" value="">
   <input type="hidden" id="userId" value="<?php echo $_SESSION['userid'] ?>">
+  <input type="hidden" id="userRole" value="<?php echo $_SESSION['role'] ?>">
   <script src="datetimepicker/js/bootstrap-datetimepicker.js"></script>
   <script>
     exams = {};
@@ -411,7 +408,7 @@
               course = "الكورس الثاني"
             }
             btns = "";
-            if (this.user_id == $("#userId").val() && this.user_id > 0) {
+            if ((this.user_id == $("#userId").val() || $("#userRole").val() == 1) && this.user_id > 0) {
               btns = `<div class="row">
                     <button class="btn btn-icon text-primary fs-2" onclick="editExam(${i})" data-toggle="modal" data-target="#editExam"><i class="bi bi-pen"></i></button>
                     <button class="btn btn-icon text-danger fs-2"  onclick="deleteExam(${this.timetableId})"><i class="bi bi-trash"></i></button>
