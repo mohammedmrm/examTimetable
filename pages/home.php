@@ -32,7 +32,7 @@
                           <span class="bi bi-x-lg"></span>
                         </label>
                       </div>
-                      <input type="date" class="form-control" value="<?php echo date('Y-m-d'); ?>" name="date" id="date">
+                      <input type="date" class="form-control" value="<?php echo date('Y-m-d', strtotime("+ 1 day")); ?>" name="date" id="date">
                       <span class="text-danger" id="date_err"></span>
                     </div>
                   </div>
