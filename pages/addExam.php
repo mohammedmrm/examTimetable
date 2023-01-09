@@ -56,7 +56,7 @@
                 <div class="row">
                   <div class="col-sm-4">
                     <label class="form-label" for="url"> نوع الدراسة</label>
-                    <select class="form-control form-control-lg" name="type" id="type">
+                    <select class="form-control form-control-lg" onchange="$(this).val() == 4 ? $('#stageDiv').show() : $('#stageDiv').hide();" name="type" id="type">
                       <option value="">-- اختر --</option>
                       <option value="1">دكتوراه</option>
                       <option value="2">ماجستير</option>
@@ -65,7 +65,7 @@
                     </select>
                     <span class="text-danger" id="type_err"></span>
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-4" id="stageDiv">
                     <label class="form-label" for="stage">المرحلة</label>
                     <select class="form-control form-control-lg" name="stage" id="stage">
                       <option value=""> -- اختر -- </option>
