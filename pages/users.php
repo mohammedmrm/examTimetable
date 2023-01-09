@@ -44,7 +44,7 @@
       <!-- End Card -->
       <!-- Table -->
       <div class="table-responsive">
-        <table style="padding: 2px;" class="table  table-bordered table-nowrape">
+        <table style="padding: 2px;" class="table  table-bordered table-nowrape" id="users_table">
           <thead class="thead-light">
             <tr>
               <th>الاسم</th>
@@ -144,6 +144,28 @@
 <input type="hidden" value="<?php echo $_GET['id']; ?>" id="workshop_id">
 <script src="datetimepicker/js/bootstrap-datetimepicker.js"></script>
 <script>
+  users_table = $("#users_table").DataTable({
+    "oLanguage": {
+      "sLengthMenu": "عرض_MENU_سجل",
+      "sSearch": "بحث:"
+    },
+    dom: 'Bfrtip',
+    buttons: [{
+        extend: 'excel',
+        exportOptions: {
+          columns: ':visible'
+        }
+      },
+      {
+        extend: 'print',
+        exportOptions: {
+          columns: ':visible'
+        }
+      },
+      'colvis'
+    ]
+  });
+
   function getUsers() {
     $.ajax({
       url: "script/_getUsers.php",
@@ -156,6 +178,7 @@
         $("#usersTable").removeClass("loading");
         $("#usersTable").html("");
         $("#pagination").html("");
+        users_table.clear().draw();
         if (res.success == 1) {
           if (res.pages >= 1) {
             if (res.page > 1) {
@@ -206,29 +229,27 @@
             } else {
               role = "مدير كلية";
             }
-            $("#usersTable").append(
-              `<tr>
-                    <td>
-                      <div class="d-flex align-items-center">
+            users_table.rows.add(
+              [
+                [`<div class="d-flex align-items-center">
                         <div class="flex-grow-1 ms-3">
                           <h6 class="text-hover-primary mb-0">${this.name}</h6>
                           <small class="d-block">${this.username}</small>
                         </div>
-                      </div>
-                    </td>
-                    <td>
-                      ${role}
-                    </td>
-                    <td style="padding: 2px;">
+                      </div>`,
+                  role,
+
+                  `<td style="padding: 2px;">
                       <button type="button" class="text-body btn-link btn"  data-bs-toggle="modal" data-bs-target="#editModal" onclick="editUser(${this.id})" >
                         <i class="bi-pen"></i>
                       </button>
                       <button  type="button" class="text-body btn-link btn" onclick="deleteUser(${this.id})"  data-bs-toggle="tooltip" data-bs-placement="top" title="">
                         <i class="bi-trash"></i>
                       </button>
-                    </td>
-                  </tr>`
-            );
+                    </td>`
+                ]
+              ]
+            ).draw();
           });
         }
 
