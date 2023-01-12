@@ -105,6 +105,15 @@
                     </select>
                     <span class=" text-danger" id="mood_err"></span>
                   </div>
+                  <div class="col-sm-4">
+                    <label class="form-label" for="study_mood">الدراسة (صباحي/مسائي)</label>
+                    <select class="form-control " name="study_mood" id="study_mood">
+                      <option value="1"> كلاهما </option>
+                      <option value="2"> الصباحي </option>
+                      <option value="3"> مسائي </option>
+                    </select>
+                    <span class="text-danger" id="study_mood_err"></span>
+                  </div>
                 </div>
                 <div class="d-grid">
                   <button type="button" onclick="addTimetable()" class="btn btn-primary btn-lg">اضافة</button>
@@ -168,7 +177,7 @@
         console.log(res);
         $("#date_err").text(res.date_err);
         if (res.success == 1) {
-          $("#addTimetableForm input").val("");
+          $("#addTimetableForm input:not(department)").val("");
           $("#addTimetableForm select").val("");
           $("#addTimetableForm span .text-dange").text("");
           Toast.success('تم الاضافة');
@@ -181,6 +190,7 @@
           $("#students_err").text(res.error["students"]);
           $("#type_err").text(res.error["type"]);
           $("#mood_err").text(res.error["mood"]);
+          $("#study_mood_err").text(res.error["study_mood"]);
           $("#stage_err").text(res.error["stage"]);
           $("#course_err").text(res.error["course"]);
           $("#attempt_err").text(res.error["attempt"]);

@@ -23,6 +23,7 @@ try {
     $type = $_REQUEST['type'];
     $stage = $type == 4 ? $_REQUEST['stage'] : 0;
     $mood = $_REQUEST['mood'];
+    $study_mood = $_REQUEST['study_mood'];
     $course = $_REQUEST['course'];
     $attempt = $_REQUEST['attempt'];
 
@@ -76,12 +77,13 @@ try {
                         stage = ? ,
                         course = ? ,
                         attempt = ?,
-                        mood = ?
+                        mood = ?,
+                        study_mood = ?
                         where id=?';
                 $result = setDataWithLastID(
                     $con,
                     $sql,
-                    [$collage, $department, $subject, $students, $date, $time, $type, $stage, $course, $attempt, $mood, $id]
+                    [$collage, $department, $subject, $students, $date, $time, $type, $stage, $course, $attempt, $mood, $study_mood, $id]
                 );
             } else {
                 $sql = 'update timetable set 
@@ -95,12 +97,13 @@ try {
                         stage = ? ,
                         course = ? ,
                         attempt = ?,
-                        mood = ?
+                        mood = ?,
+                        study_mood = ?
                         where user_id =? and id=?';
                 $result = setDataWithLastID(
                     $con,
                     $sql,
-                    [$collage, $department, $subject, $students, $date, $time, $type, $stage, $course, $attempt, $mood, $_SESSION['userid'], $id]
+                    [$collage, $department, $subject, $students, $date, $time, $type, $stage, $course, $attempt, $mood, $study_mood, $_SESSION['userid'], $id]
                 );
             }
             $success = 1;
@@ -116,6 +119,7 @@ try {
             "type" => $v->errors()->get('type'),
             "students" => $v->errors()->get('studnts'),
             "mood" => $v->errors()->get('mood'),
+            "study_mood" => $v->errors()->get('study_mood'),
             "stage" => $v->errors()->get('stage'),
             "course" => $v->errors()->get('course'),
             "attempt" => $v->errors()->get('attempt'),

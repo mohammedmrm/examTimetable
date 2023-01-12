@@ -24,6 +24,7 @@ try {
   $mood = $_REQUEST['mood'];
   $course = $_REQUEST['course'];
   $attempt = $_REQUEST['attempt'];
+  $study_mood = $_REQUEST['study_mood'];
 
   $result = 0;
   //------------------==datetime validation-------------------------------
@@ -53,6 +54,7 @@ try {
     'students'   => [$students,   'required|int'],
     'type'       => [$type,       'required|int'],
     'mood'       => [$mood,       'required|int'],
+    'study_mood' => [$study_mood, 'required|int'],
     'stage'      => [$stage,      'int'],
     'course'     => [$course,     'required|int'],
     'attempt'    => [$attempt,    'required|int'],
@@ -62,12 +64,12 @@ try {
     $sql = "select * from users where id=?";
     $res = getData($con, $sql, [$_SESSION['userid']]);
     if (count($res)) {
-      $sql = 'insert into timetable (collage_id,department,subject,students,date,time,type,stage,course,attempt,mood,user_id) 
-              values (?,?,?,?,?,?,?,?,?,?,?,?)';
+      $sql = 'insert into timetable (collage_id,department,subject,students,date,time,type,stage,course,attempt,mood,study_mood,user_id) 
+              values (?,?,?,?,?,?,?,?,?,?,?,?,?)';
       $result = setDataWithLastID(
         $con,
         $sql,
-        [$collage, $department, $subject, $students, $date, $time, $type, $stage, $course, $attempt, $mood, $_SESSION['userid']]
+        [$collage, $department, $subject, $students, $date, $time, $type, $stage, $course, $attempt, $mood, $study_mood, $_SESSION['userid']]
       );
       $success = 1;
     } else {
@@ -81,6 +83,7 @@ try {
       "type" => $v->errors()->get('type')[0],
       "students" => $v->errors()->get('studnts')[0],
       "mood" => $v->errors()->get('mood')[0],
+      "study_mood" => $v->errors()->get('study_mood')[0],
       "stage" => $v->errors()->get('stage')[0],
       "course" => $v->errors()->get('course')[0],
       "attempt" => $v->errors()->get('attempt')[0],

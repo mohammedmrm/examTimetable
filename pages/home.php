@@ -209,6 +209,15 @@
                       </select>
                       <span class=" text-danger" id="mood_err"></span>
                     </div>
+                    <div class="col-sm-4">
+                      <label class="form-label" for="study_mood">الدراسة (صباحي/مسائي)</label>
+                      <select class="form-control " name="study_mood" id="study_mood">
+                        <option value="1"> كلاهما </option>
+                        <option value="2"> الصباحي </option>
+                        <option value="3"> مسائي </option>
+                      </select>
+                      <span class="text-danger" id="study_mood_err"></span>
+                    </div>
                     <input id="timetableId" type="hidden" name="timetableId" value="">
                   </div>
                 </div>
@@ -361,20 +370,8 @@
             } else {
               bg = "danger-bg";
             }
-            if (this.stage == 1) {
-              stage = "الاولى";
-            } else if (this.stage == 2) {
-              stage = "الثانية";
-            } else if (this.stage == 3) {
-              stage = "الثالثة";
-            } else if (this.stage == 4) {
-              stage = "الرابعة";
-            } else if (this.stage == 5) {
-              stage = "الخامسة";
-            } else if (this.stage == 6) {
-              stage = "السادسة";
-            }
 
+            study_mood = '';
             if (this.type == 1) {
               type = "دكتوراه"
             } else if (this.type == 2) {
@@ -383,6 +380,27 @@
               type = "دبلوم عالي"
             } else if (this.type == 4) {
               type = "دراسات اولية"
+              if (this.study_mood == 1) {
+                study_mood = 'صباحي و مسائي';
+              } else if (this.study_mood == 2) {
+                study_mood = 'صباحي';
+              } else if (this.study_mood == 3) {
+                study_mood = 'مسائي';
+              }
+
+              if (this.stage == 1) {
+                stage = "الاولى";
+              } else if (this.stage == 2) {
+                stage = "الثانية";
+              } else if (this.stage == 3) {
+                stage = "الثالثة";
+              } else if (this.stage == 4) {
+                stage = "الرابعة";
+              } else if (this.stage == 5) {
+                stage = "الخامسة";
+              } else if (this.stage == 6) {
+                stage = "السادسة";
+              }
             }
 
             if (this.mood == 1) {
@@ -405,6 +423,7 @@
             } else {
               course = "الكورس الثاني"
             }
+
             btns = "";
             if ((this.user_id == $("#userId").val() || $("#userRole").val() == 1) && this.user_id > 0) {
               btns = `<div class="row">
@@ -421,7 +440,7 @@
                 this.dat + `<br>` + this.time,
                 `${course}-${attempt} <br> ${mood}`,
                 type,
-                stage,
+                `${stage}<br> ${study_mood}`,
                 "العدد الكلي: " + this.students + `<br>${attendance !=''? 'عدد الحضور: '+attendance:''}`,
                 btns
               ]
@@ -475,6 +494,7 @@
             $("#students_err").text(res.error["students"]);
             $("#type_err").text(res.error["type"]);
             $("#mood_err").text(res.error["mood"]);
+            $("#study_mood_err").text(res.error["study_mood"]);
             $("#stage_err").text(res.error["stage"]);
             $("#course_err").text(res.error["course"]);
             $("#attempt_err").text(res.error["attempt"]);
@@ -510,6 +530,7 @@
       $("#addTimetableForm #subject").val(exam[idx].subject);
       $("#addTimetableForm #course").val(exam[idx].course);
       $("#addTimetableForm #attempt").val(exam[idx].attempt);
+      $("#addTimetableForm #study_mood").val(exam[idx].study_mood);
     }
 
     function deleteExam(id) {
