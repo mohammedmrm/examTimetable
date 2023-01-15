@@ -429,7 +429,7 @@
             } else {
               course = "الكورس الثاني";
             }
-            if (this.loading) {
+            if (this.loading == 1) {
               loading = ' ( تحميل ) ';
             } else {
               loading = '';
