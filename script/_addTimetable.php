@@ -22,7 +22,7 @@ try {
   $type = $_REQUEST['type'];
   $stage = $type == 4 ? $_REQUEST['stage'] : 0;
   $mood = $_REQUEST['mood'];
-  $loading = $_REQUEST['loading'] ? true : false;
+  $loading = isset($_REQUEST['loading']) && $_REQUEST['loading'] == true ? true : false;
   $course = $_REQUEST['course'];
   $attempt = $_REQUEST['attempt'];
   $study_mood = $_REQUEST['study_mood'];
