@@ -186,8 +186,15 @@
           $("#addTimetableForm input:not(department)").val("");
           $("#addTimetableForm select").val("");
           $("#addTimetableForm span .text-dange").text("");
-          Toast.success('تم الاضافة');
-          alert("تم الاضافة");
+          Toastify({
+            text: 'تم الاضافة',
+            duration: 3000,
+            close: true,
+            gravity: "bottom", // `top` or `bottom`
+            position: "center", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            className: "success",
+          }).showToast();
         } else {
           $("#date_err").text(res.error["date"]);
           $("#collage_err").text(res.error["collage"]);
@@ -200,14 +207,30 @@
           $("#stage_err").text(res.error["stage"]);
           $("#course_err").text(res.error["course"]);
           $("#attempt_err").text(res.error["attempt"]);
-          Toast.warning("هناك بعض المدخلات غير صالحة", 'خطأ');
+          Toastify({
+            text: "هناك بعض المدخلات غير صالحة",
+            duration: 3000,
+            close: true,
+            gravity: "bottom", // `top` or `bottom`
+            position: "center", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            className: "success",
+          }).showToast();
         }
 
       },
       error: function(e) {
         $("#addTimetableForm").removeClass('loading');
         console.log(e);
-        Toast.error('خطأ');
+        Toastify({
+          text: 'خطأ',
+          duration: 3000,
+          close: true,
+          gravity: "bottom", // `top` or `bottom`
+          position: "center", // `left`, `center` or `right`
+          stopOnFocus: true, // Prevents dismissing of toast on hover
+          className: "success",
+        }).showToast();
       }
     });
   }
