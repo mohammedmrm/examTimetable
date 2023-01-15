@@ -541,7 +541,7 @@
       $("#addTimetableForm #course").val(exam[idx].course);
       $("#addTimetableForm #attempt").val(exam[idx].attempt);
       $("#addTimetableForm #study_mood").val(exam[idx].study_mood);
-      $("#addTimetableForm #loading").prop("checked", exam[idx].loading ? true : false);
+      $("#addTimetableForm #loading").prop("checked", exam[idx].loading == 1 ? 1 : 0);
     }
 
     function deleteExam(id) {
