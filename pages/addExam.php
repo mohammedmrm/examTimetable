@@ -114,6 +114,12 @@
                     </select>
                     <span class="text-danger" id="study_mood_err"></span>
                   </div>
+                  <div class="col-sm-4">
+                    <br>
+                    <input type="checkbox" class="form-check-input" name="loading" id="loading" />
+                    <label class="form-label" for="loading"> هل الامتحان للمحملين؟ </label>
+                    <span class="text-danger" id="loading_err"></span>
+                  </div>
                 </div>
                 <div class="d-grid">
                   <button type="button" onclick="addTimetable()" class="btn btn-primary btn-lg">اضافة</button>

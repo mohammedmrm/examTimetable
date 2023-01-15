@@ -22,6 +22,7 @@ try {
   $type = $_REQUEST['type'];
   $stage = $type == 4 ? $_REQUEST['stage'] : 0;
   $mood = $_REQUEST['mood'];
+  $loading = $_REQUEST['loading'] ? true : false;
   $course = $_REQUEST['course'];
   $attempt = $_REQUEST['attempt'];
   $study_mood = $_REQUEST['study_mood'];
@@ -64,12 +65,12 @@ try {
     $sql = "select * from users where id=?";
     $res = getData($con, $sql, [$_SESSION['userid']]);
     if (count($res)) {
-      $sql = 'insert into timetable (collage_id,department,subject,students,date,time,type,stage,course,attempt,mood,study_mood,user_id) 
-              values (?,?,?,?,?,?,?,?,?,?,?,?,?)';
+      $sql = 'insert into timetable (collage_id,department,subject,students,date,time,type,stage,course,attempt,mood,study_mood,loading,user_id) 
+              values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
       $result = setDataWithLastID(
         $con,
         $sql,
-        [$collage, $department, $subject, $students, $date, $time, $type, $stage, $course, $attempt, $mood, $study_mood, $_SESSION['userid']]
+        [$collage, $department, $subject, $students, $date, $time, $type, $stage, $course, $attempt, $mood, $study_mood, $loading, $_SESSION['userid']]
       );
       $success = 1;
     } else {

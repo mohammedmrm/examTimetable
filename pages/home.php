@@ -218,6 +218,12 @@
                       </select>
                       <span class="text-danger" id="study_mood_err"></span>
                     </div>
+                    <div class="col-sm-4">
+                      <br>
+                      <input type="checkbox" class="form-check-input" name="loading" id="loading" />
+                      <label class="form-label" for="loading"> هل الامتحان للمحملين؟ </label>
+                      <span class="text-danger" id="loading_err"></span>
+                    </div>
                     <input id="timetableId" type="hidden" name="timetableId" value="">
                   </div>
                 </div>
@@ -404,14 +410,14 @@
             }
 
             if (this.mood == 1) {
-              mood = "حضوري"
+              mood = "حضوري";
             } else {
-              mood = "الكتروني"
+              mood = "الكتروني";
             }
             if (this.attempt == 1) {
-              attempt = "الدور الاول"
+              attempt = "الدور الاول";
             } else {
-              attempt = "الدور الثاني"
+              attempt = "الدور الثاني";
             }
             if (this.attendance == 0) {
               attendance = ''
@@ -419,11 +425,15 @@
               attendance = this.attendance
             }
             if (this.course == 1) {
-              course = "الكورس الاول"
+              course = "الكورس الاول";
             } else {
-              course = "الكورس الثاني"
+              course = "الكورس الثاني";
             }
-
+            if (this.loading) {
+              loading = ' ( تحميل ) ';
+            } else {
+              loading = '';
+            }
             btns = "";
             if ((this.user_id == $("#userId").val() || $("#userRole").val() == 1) && this.user_id > 0) {
               btns = `<div class="row">
@@ -440,7 +450,7 @@
                 this.dat + `<br>` + this.time,
                 `${course}-${attempt} <br> ${mood}`,
                 type,
-                `${stage}<br> ${study_mood}`,
+                `${stage} <br> ${study_mood}  ${loading}`,
                 "العدد الكلي: " + this.students + `<br>${attendance !=''? 'عدد الحضور: '+attendance:''}`,
                 btns
               ]
@@ -531,6 +541,7 @@
       $("#addTimetableForm #course").val(exam[idx].course);
       $("#addTimetableForm #attempt").val(exam[idx].attempt);
       $("#addTimetableForm #study_mood").val(exam[idx].study_mood);
+      $("#addTimetableForm #loading").prop("checked", exam[idx].loading ? true : false);
     }
 
     function deleteExam(id) {
