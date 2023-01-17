@@ -344,13 +344,13 @@
         type: "POST",
         data: $("#findWorkshopForm").serialize(),
         beforeSend: function() {
-          $("#timetable").addClass("loading");
+          $("#tb-timetable").addClass("loading");
         },
         success: function(res) {
           console.log(res);
           $("#timetable").html("");
           $("#pagination").html("");
-          $("#timetable").removeClass("loading");
+          $("#tb-timetable").removeClass("loading");
           collage = 0;
           if ($("#type").val() != 4 && $("#type").val() != '') {
             timetable.column(5).visible(false);
@@ -459,7 +459,7 @@
           });
         },
         error: function(e) {
-          $("#timetable").removeClass("loading");
+          $("#tb-timetable").removeClass("loading");
           console.log(e);
         },
       });
