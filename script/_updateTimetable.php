@@ -6,7 +6,7 @@ header('Content-Type: application/json');
 require_once("dbconnection.php");
 require_once("_access.php");
 require_once('../validator/autoload.php');
-access([1]);
+access([1,2]);
 
 use Violin\Violin;
 
