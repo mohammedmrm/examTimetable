@@ -4,7 +4,9 @@ session_start();
 error_reporting(0);
 header('Content-Type: application/json');
 require_once("dbconnection.php");
+require_once('_access.php');
 require_once('../validator/autoload.php');
+access([1]);
 
 use Violin\Violin;
 
