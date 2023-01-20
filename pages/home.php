@@ -361,7 +361,7 @@
             timetable.column(6).visible(true);
             timetable.column(7).visible(true);
           } else {
-            timetable.column(6).visible(false);
+            //timetable.column(6).visible(false);
             timetable.column(7).visible(false);
           }
           timetable.clear().draw();
